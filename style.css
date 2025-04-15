@@ -1,0 +1,65 @@
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form-section {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input, select, textarea, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 4px;
+    background-color: #2c2c2c;
+    color: #ffffff;
+}
+
+button {
+    display: block; /* Center the button */
+    margin: 20px auto; /* Add spacing and center horizontally */
+    width: auto; /* Adjust width to fit content */
+    padding: 10px 20px; /* Add padding for better appearance */
+    background-color: #4caf50;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#survey-questions {
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 800px;
+    background-color: #1e1e1e; /* Dark mode background */
+    color: #ffffff; /* Brighter text */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+#selectedGenreNames {
+    margin-top: 10px; /* Adjust spacing from the Next button */
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff; /* Brighter text */
+    text-align: center;
+    font-family: Arial, sans-serif;
+}

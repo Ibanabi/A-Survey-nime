@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UGT and BIG5 Personality Survey</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="survey-container">
+        <!-- Section 1: Information -->
+        <div class="form-section" id="section-1">
+            <h2>Basic Information</h2>
+            <label for="pseudonym">Pseudonym:</label>
+            <input type="text" id="pseudonym" name="pseudonym" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="watch-frequency">Watch Frequency:</label>
+            <select id="watch-frequency" name="watch-frequency" required>
+                <option value="Rare">Rare</option>
+                <option value="Occasional">Occasional</option>
+                <option value="Frequent">Frequent</option>
+                <option value="Daily">Daily</option>
+            </select>
+
+            <label for="year-level">Year Level:</label>
+            <select id="year-level" name="year-level" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            <label for="ugt-questions">UGT Questions:</label>
+            <div id="ugt-questions">
+                <p>1. How often do you watch anime?</p>
+                <select name="ugt-q1" required>
+                    <option value="1">Never</option>
+                    <option value="2">Rarely</option>
+                    <option value="3">Sometimes</option>
+                    <option value="4">Often</option>
+                    <option value="5">Always</option>
+                </select>
+
+                <p>2. How much do you enjoy watching anime?</p>
+                <select name="ugt-q2" required>
+                    <option value="1">Not at all</option>
+                    <option value="2">Slightly</option>
+                    <option value="3">Moderately</option>
+                    <option value="4">Very much</option>
+                    <option value="5">Extremely</option>
+                </select>
+            </div>
+
+            <button id="to-section-2">Next</button>
+        </div>
+
+        <!-- Section 2: Genre Selection -->
+        <div class="form-section" id="section-2" style="display: none;">
+            <h2>Genre Selection</h2>
+            <p>Select up to 3 anime genres:</p>
+            <label><input type="checkbox" name="genre" value="Action" required> Action</label>
+            <label><input type="checkbox" name="genre" value="Adventure" required> Adventure</label>
+            <label><input type="checkbox" name="genre" value="Comedy" required> Comedy</label>
+            <label><input type="checkbox" name="genre" value="Drama" required> Drama</label>
+            <label><input type="checkbox" name="genre" value="Fantasy" required> Fantasy</label>
+            <label><input type="checkbox" name="genre" value="Horror" required> Horror</label>
+            <label><input type="checkbox" name="genre" value="Romance" required> Romance</label>
+            <label><input type="checkbox" name="genre" value="SciFi" required> Sci-Fi</label>
+
+            <button id="to-section-3">Next</button>
+        </div>
+
+        <!-- Section 3: Questions -->
+        <div class="form-section" id="section-3" style="display: none;">
+            <h2>BIG5:OCEAN - (1)Strongly Disagree - (5) Strongly Agree</h2>
+            <form id="genre-questions">
+                <div id="Action-Genre" style="display: none;">
+                    <h3>Action Genre</h3>
+
+                    <!-- OPENSNESS to Experience -->
+                    <fieldset class="trait-section" id="action-openness">
+                        <legend>Openness to Experience - (Openminded, Imaginative, Curious)</legend>
+                        <!-- Question 1 -->
+                        <div class="question">
+                            <label for="action-openness-1">(1).I prefer protagonists who defy genre rules (e.g., chaotic anti-heroes) over classic hero’s journey archetypes.</label>
+                            <div>
+                                <label><input type="radio" name="action-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="action-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="action-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="action-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="action-openness-1" value="5"> 5</label>
+                            </div>
+                            <label for="action-openness-2">(2). Unexpected plot twists (e.g., sudden betrayals) make an anime more exciting.</label>
+                            <div>
+                                <label><input type="radio" name="action-openness-2" value="1"> 1</label>
+                                <label><input type="radio" name="action-openness-2" value="2"> 2</label>
+                                <label><input type="radio" name="action-openness-2" value="3"> 3</label>
+                                <label><input type="radio" name="action-openness-2" value="4"> 4</label>
+                                <label><input type="radio" name="action-openness-2" value="5"> 5</label>
+                            </div>
+                            <label for="action-openness-3">(3). Are you more drawn to bold, unconventional art styles?</label>
+                            <div class="question-image">
+                                <img src="https://m.media-amazon.com/images/M/MV5BNTYzNzUzN2EtMzdlZC00YjM3LWEzNjQtNzRmMzRmYWZhMjY3XkEyXkFqcGc@._V1_.jpg" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-openness-3" value="1"> 1</label>
+                                <label><input type="radio" name="action-openness-3" value="2"> 2</label>
+                                <label><input type="radio" name="action-openness-3" value="3"> 3</label>
+                                <label><input type="radio" name="action-openness-3" value="4"> 4</label>
+                                <label><input type="radio" name="action-openness-3" value="5"> 5</label>
+                            </div>
+                            <label for="action-openness-4">(4). Are you all about diving into a rich, complex world’s history, or is "let’s just fight" enough for you (e.g,. Demon Slayer)?</label>
+                            <div>
+                                <label><input type="radio" name="action-openness-4" value="1"> 1</label>
+                                <label><input type="radio" name="action-openness-4" value="2"> 2</label>
+                                <label><input type="radio" name="action-openness-4" value="3"> 3</label>
+                                <label><input type="radio" name="action-openness-4" value="4"> 4</label>
+                                <label><input type="radio" name="action-openness-4" value="5"> 5</label>
+                            </div>
+                            <label for="action-openness-5">(5). Would you be open to watching an Action-packed anime blended with musical numbers?</label>
+                            <div>
+                                <label><input type="radio" name="action-openness-5" value="1"> 1</label>
+                                <label><input type="radio" name="action-openness-5" value="2"> 2</label>
+                                <label><input type="radio" name="action-openness-5" value="3"> 3</label>
+                                <label><input type="radio" name="action-openness-5" value="4"> 4</label>
+                                <label><input type="radio" name="action-openness-5" value="5"> 5</label>
+                            </div>
+                            
+                        </div>
+                        <!-- Repeat similar blocks for questions 2 to 10 for Openness -->
+                    </fieldset>
+
+                    <!-- CONSCIENTIOUSNESS -->
+                    <fieldset class="trait-section" id="action-conscientiousness">
+                        <legend>Conscientiousness-(Disciplined, Organized, Dependable)</legend>
+                        <!-- Question 1 -->
+                        <div class="question">
+                            <label for="action-conscientiousness-1">1. I appreciate action anime where battles are methodically planned.</label>
+                            <div>
+                                <label><input type="radio" name="action-conscientiousness-1" value="1"> 1</label>
+                                <label><input type="radio" name="action-conscientiousness-1" value="2"> 2</label>
+                                <label><input type="radio" name="action-conscientiousness-1" value="3"> 3</label>
+                                <label><input type="radio" name="action-conscientiousness-1" value="4"> 4</label>
+                                <label><input type="radio" name="action-conscientiousness-1" value="5"> 5</label>
+                            </div>
+                            <label for="action-conscientiousness-2">(2). I admire protagonists who meticulously plan their moves (e.g., Roy Mustang) over chaotic fighters.</label>
+                            <div class="question-image">
+                                <img src="https://images3.alphacoders.com/107/thumb-1920-107329.jpg" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-conscientiousness-2" value="1"> 1</label>
+                                <label><input type="radio" name="action-conscientiousness-2" value="2"> 2</label>
+                                <label><input type="radio" name="action-conscientiousness-2" value="3"> 3</label>
+                                <label><input type="radio" name="action-conscientiousness-2" value="4"> 4</label>
+                                <label><input type="radio" name="action-conscientiousness-2" value="5"> 5</label>
+                            </div>
+                            <label for="action-conscientiousness-3">(3). Slow, methodical plots are worth the wait for a satisfying payoff.</label>
+                            <div>
+                                <label><input type="radio" name="action-conscientiousness-3" value="1"> 1</label>
+                                <label><input type="radio" name="action-conscientiousness-3" value="2"> 2</label>
+                                <label><input type="radio" name="action-conscientiousness-3" value="3"> 3</label>
+                                <label><input type="radio" name="action-conscientiousness-3" value="4"> 4</label>
+                                <label><input type="radio" name="action-conscientiousness-3" value="5"> 5</label>
+                            </div>
+                            <label for="action-conscientiousness-4">(4). I prefer clear "good vs. evil" over ambiguous and mysterious plotlines.</label>
+                            <div>
+                                <label><input type="radio" name="action-conscientiousness-4" value="1"> 1</label>
+                                <label><input type="radio" name="action-conscientiousness-4" value="2"> 2</label>
+                                <label><input type="radio" name="action-conscientiousness-4" value="3"> 3</label>
+                                <label><input type="radio" name="action-conscientiousness-4" value="4"> 4</label>
+                                <label><input type="radio" name="action-conscientiousness-4" value="5"> 5</label>
+                            </div>
+                            <label for="action-conscientiousness-5">(5). I’d rather face uncertain outcomes than the cliche "hero will win".</label>
+                            <div>
+                                <label><input type="radio" name="action-conscientiousness-5" value="1"> 1</label>
+                                <label><input type="radio" name="action-conscientiousness-5" value="2"> 2</label>
+                                <label><input type="radio" name="action-conscientiousness-5" value="3"> 3</label>
+                                <label><input type="radio" name="action-conscientiousness-5" value="4"> 4</label>
+                                <label><input type="radio" name="action-conscientiousness-5" value="5"> 5</label>
+                            </div>
+                           
+                        </div>
+                        <!-- Repeat similar blocks for questions 2 to 10 for Conscientiousness -->
+                    </fieldset>
+
+                    <!-- EXTRAVERSION -->
+                    <fieldset class="trait-section" id="action-extraversion">
+                        <legend>Extraversion - (Adrenaline, Social)</legend>
+                        <!-- Question 1 -->
+                        <div class="question">
+                            <label for="action-extraversion-1">1. I like squad banters more than lone-wolf protagonists.</label>
+                            <div>
+                                <label><input type="radio" name="action-extraversion-1" value="1"> 1</label>
+                                <label><input type="radio" name="action-extraversion-1" value="2"> 2</label>
+                                <label><input type="radio" name="action-extraversion-1" value="3"> 3</label>
+                                <label><input type="radio" name="action-extraversion-1" value="4"> 4</label>
+                                <label><input type="radio" name="action-extraversion-1" value="5"> 5</label>
+                            </div>
+                            <label for="action-extraversion-2">(2). Slow-paced action is something I would like</label>
+                            <div>
+                                <label><input type="radio" name="action-extraversion-2" value="1"> 1</label>
+                                <label><input type="radio" name="action-extraversion-2" value="2"> 2</label>
+                                <label><input type="radio" name="action-extraversion-2" value="3"> 3</label>
+                                <label><input type="radio" name="action-extraversion-2" value="4"> 4</label>
+                                <label><input type="radio" name="action-extraversion-2" value="5"> 5</label>
+                            </div>
+                            <label for="action-extraversion-3">(3). Over-the-top power systems like Dragon Ball is something I can handle</label>
+                            <div class="question-image">
+                                <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/c98559f7-a363-432c-be55-7b2b93b2d655/de0t043-b7384060-a08f-4175-92fb-2abe847d9dd4.png/v1/fill/w_1280,h_720,q_80,strp/my_power_level_calculating_system_example___goku_by_enderdragneel17_de0t043-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvYzk4NTU5ZjctYTM2My00MzJjLWJlNTUtN2IyYjkzYjJkNjU1XC9kZTB0MDQzLWI3Mzg0MDYwLWEwOGYtNDE3NS05MmZiLTJhYmU4NDdkOWRkNC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.HIfo7wAM861huywj0uKKpkNTMNXrkKIprbmzl_gNS7s" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-extraversion-3" value="1"> 1</label>
+                                <label><input type="radio" name="action-extraversion-3" value="2"> 2</label>
+                                <label><input type="radio" name="action-extraversion-3" value="3"> 3</label>
+                                <label><input type="radio" name="action-extraversion-3" value="4"> 4</label>
+                                <label><input type="radio" name="action-extraversion-3" value="5"> 5</label>
+                            </div>
+                            <label for="action-extraversion-4">(4). Flamboyant, talkative villains (e.g., FMAB's Envy) make fights more entertaining.</label>
+                            <div class="question-image">
+                                <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/03/Best-Worst-Outfits-envy-2.jpg" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-extraversion-4" value="1"> 1</label>
+                                <label><input type="radio" name="action-extraversion-4" value="2"> 2</label>
+                                <label><input type="radio" name="action-extraversion-4" value="3"> 3</label>
+                                <label><input type="radio" name="action-extraversion-4" value="4"> 4</label>
+                                <label><input type="radio" name="action-extraversion-4" value="5"> 5</label>
+                            </div>
+                            <label for="action-extraversion-5">(5). If I were the protagonist, I'd be long-wolf  </label>
+                            <div>
+                                <label><input type="radio" name="action-extraversion-5" value="1"> 1</label>
+                                <label><input type="radio" name="action-extraversion-5" value="2"> 2</label>
+                                <label><input type="radio" name="action-extraversion-5" value="3"> 3</label>
+                                <label><input type="radio" name="action-extraversion-5" value="4"> 4</label>
+                                <label><input type="radio" name="action-extraversion-5" value="5"> 5</label>
+                            </div>
+                        </div>
+                        <!-- Repeat similar blocks for questions 2 to 10 for Extraversion -->
+                    </fieldset>
+
+                    <!-- AGREEABLENESS -->
+                    <fieldset class="trait-section" id="action-agreeableness">
+                        <legend>Agreeableness - (Teamwork, Empathy, Harmony)</legend>
+                        <!-- Question 1 -->
+                        <div class="question">
+                            <label for="action-agreeableness-1">1. I value action anime that emphasizes teamwork and camaraderie.</label>
+                            <div>
+                                <label><input type="radio" name="action-agreeableness-1" value="1"> 1</label>
+                                <label><input type="radio" name="action-agreeableness-1" value="2"> 2</label>
+                                <label><input type="radio" name="action-agreeableness-1" value="3"> 3</label>
+                                <label><input type="radio" name="action-agreeableness-1" value="4"> 4</label>
+                                <label><input type="radio" name="action-agreeableness-1" value="5"> 5</label>
+                            </div>
+                            <label for="action-agreeableness-2">1. Morally gray characters (e.g., Death Note's Light Yagami) make stories richer, not confusing.</label>
+                            <div class="question-image">
+                                <img src="https://static1.srcdn.com/wordpress/wp-content/uploads/2023/07/death-note-light-in-the-rain.jpg" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-agreeableness-2" value="1"> 1</label>
+                                <label><input type="radio" name="action-agreeableness-2" value="2"> 2</label>
+                                <label><input type="radio" name="action-agreeableness-2" value="3"> 3</label>
+                                <label><input type="radio" name="action-agreeableness-2" value="4"> 4</label>
+                                <label><input type="radio" name="action-agreeableness-2" value="5"> 5</label>
+                            </div>
+                            <label for="action-agreeableness-3">(3). I’d support a redeemed villain joining the hero’s side</label>
+                            <div>
+                                <label><input type="radio" name="action-agreeableness-3" value="1"> 1</label>
+                                <label><input type="radio" name="action-agreeableness-3" value="2"> 2</label>
+                                <label><input type="radio" name="action-agreeableness-3" value="3"> 3</label>
+                                <label><input type="radio" name="action-agreeableness-3" value="4"> 4</label>
+                                <label><input type="radio" name="action-agreeableness-3" value="5"> 5</label>
+                            </div>
+                            <label for="action-agreeableness-4">(4). I root harder for heroes fighting for others (e.g., Naruto's "protect my friends") than self-interested ones.</label>
+                            <div class="question-image">
+                                <img src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2020/05/Naruto-Kakashi-Sasuke-Sakura-Team-7.jpg" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-agreeableness-4" value="1"> 1</label>
+                                <label><input type="radio" name="action-agreeableness-4" value="2"> 2</label>
+                                <label><input type="radio" name="action-agreeableness-4" value="3"> 3</label>
+                                <label><input type="radio" name="action-agreeableness-4" value="4"> 4</label>
+                                <label><input type="radio" name="action-agreeableness-4" value="5"> 5</label>
+                            </div>
+                            <label for="action-agreeableness-5">(5). Tragic hero sacrifices for the greater good add emotional weight to a story.</label>
+                            <div>
+                                <label><input type="radio" name="action-agreeableness-5" value="1"> 1</label>
+                                <label><input type="radio" name="action-agreeableness-5" value="2"> 2</label>
+                                <label><input type="radio" name="action-agreeableness-5" value="3"> 3</label>
+                                <label><input type="radio" name="action-agreeableness-5" value="4"> 4</label>
+                                <label><input type="radio" name="action-agreeableness-5" value="5"> 5</label>
+                            </div>
+                        </div>
+                        
+                        <!-- Repeat similar blocks for questions 2 to 10 for Agreeableness -->
+                    </fieldset>
+
+                    <!-- NEUROTICISM -->
+                    <fieldset class="trait-section" id="action-neuroticism">
+                        <legend>Neuroticism - (Darker, Emotionally Intense)</legend>
+                        <!-- Question 1 -->
+                        <div class="question">
+                            <label for="action-neuroticism-1">(1). Dark themes like trauma or existential dread (e.g., Goblin Slayer ) deepen an Action anime for me.</label>
+                            <div class="question-image">
+                                <img src="https://gifdb.com/images/high/goblin-slayer-choking-goblin-uz4x3i5cyuyuf4ss.gif" style="max-width: 100%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-neuroticism-1" value="1"> 1</label>
+                                <label><input type="radio" name="action-neuroticism-1" value="2"> 2</label>
+                                <label><input type="radio" name="action-neuroticism-1" value="3"> 3</label>
+                                <label><input type="radio" name="action-neuroticism-1" value="4"> 4</label>
+                                <label><input type="radio" name="action-neuroticism-1" value="5"> 5</label>
+                            </div>
+                            <label for="action-neuroticism-2">(2). The threat of "the world ending" feels thrilling, not stressful.</label>
+                            <div>
+                                <label><input type="radio" name="action-neuroticism-2" value="1"> 1</label>
+                                <label><input type="radio" name="action-neuroticism-2" value="2"> 2</label>
+                                <label><input type="radio" name="action-neuroticism-2" value="3"> 3</label>
+                                <label><input type="radio" name="action-neuroticism-2" value="4"> 4</label>
+                                <label><input type="radio" name="action-neuroticism-2" value="5"> 5</label>
+                            </div>
+                            <label for="action-neuroticism-3">(3). Plots where victory comes at a personal cost (e.g., Attack on Titan's body count) resonate with me.</label>
+                            <div class="question-image">
+                                <img src="https://i.pinimg.com/originals/b7/7f/09/b77f095f60272c577586bafe2b46958d.gif" style="max-width: 50%; height: auto;">
+                            </div>
+                            <div>
+                                <label><input type="radio" name="action-neuroticism-3" value="1"> 1</label>
+                                <label><input type="radio" name="action-neuroticism-3" value="2"> 2</label>
+                                <label><input type="radio" name="action-neuroticism-3" value="3"> 3</label>
+                                <label><input type="radio" name="action-neuroticism-3" value="4"> 4</label>
+                                <label><input type="radio" name="action-neuroticism-3" value="5"> 5</label>
+                            </div>
+                            <label for="action-neuroticism-4">(4). Terrifyingly competent villains (e.g., Vinland Saga's Askeladd) make the story more compelling.</label>
+                            <div>
+                                <label><input type="radio" name="action-neuroticism-4" value="1"> 1</label>
+                                <label><input type="radio" name="action-neuroticism-4" value="2"> 2</label>
+                                <label><input type="radio" name="action-neuroticism-4" value="3"> 3</label>
+                                <label><input type="radio" name="action-neuroticism-4" value="4"> 4</label>
+                                <label><input type="radio" name="action-neuroticism-4" value="5"> 5</label>
+                            </div>
+                            <label for="action-neuroticism-5">(5). I can handle heroes losing everything before triumphing, even if it’s emotionally brutal and leads to loved characters' deaths.</label>
+                            <div>
+                                <label><input type="radio" name="action-neuroticism-5" value="1"> 1</label>
+                                <label><input type="radio" name="action-neuroticism-5" value="2"> 2</label>
+                                <label><input type="radio" name="action-neuroticism-5" value="3"> 3</label>
+                                <label><input type="radio" name="action-neuroticism-5" value="4"> 4</label>
+                                <label><input type="radio" name="action-neuroticism-5" value="5"> 5</label>
+                            </div>
+                        </div>
+                        <!-- Repeat similar blocks for questions 2 to 10 for Neuroticism -->
+                    </fieldset>
+
+                    <!-- Optional Free-Response -->
+                    <p>Why do you like the Action genre?</p>
+                    <textarea name="action-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Adventure Genre Section -->
+                <div id="Adventure-Genre" style="display: none;">
+                    <h3>Adventure Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="adventure-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="adventure-openness-1">1. I enjoy adventure anime with unique and imaginative worlds.</label>
+                            <div>
+                                <label><input type="radio" name="adventure-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="adventure-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="adventure-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="adventure-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="adventure-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Adventure genre?</p>
+                    <textarea name="adventure-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Comedy Genre Section -->
+                <div id="Comedy-Genre" style="display: none;">
+                    <h3>Comedy Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="comedy-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="comedy-openness-1">1. I enjoy comedy anime with clever and original humor.</label>
+                            <div>
+                                <label><input type="radio" name="comedy-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="comedy-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="comedy-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="comedy-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="comedy-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Comedy genre?</p>
+                    <textarea name="comedy-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Drama Genre Section -->
+                <div id="Drama-Genre" style="display: none;">
+                    <h3>Drama Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="drama-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="drama-openness-1">1. I enjoy drama anime with deep and thought-provoking storylines.</label>
+                            <div>
+                                <label><input type="radio" name="drama-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="drama-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="drama-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="drama-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="drama-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Drama genre?</p>
+                    <textarea name="drama-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Fantasy Genre Section -->
+                <div id="Fantasy-Genre" style="display: none;">
+                    <h3>Fantasy Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="fantasy-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="fantasy-openness-1">1. I enjoy fantasy anime with magical and otherworldly elements.</label>
+                            <div>
+                                <label><input type="radio" name="fantasy-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="fantasy-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="fantasy-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="fantasy-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="fantasy-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Fantasy genre?</p>
+                    <textarea name="fantasy-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Horror Genre Section -->
+                <div id="Horror-Genre" style="display: none;">
+                    <h3>Horror Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="horror-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="horror-openness-1">1. I enjoy horror anime that explore dark and eerie themes.</label>
+                            <div>
+                                <label><input type="radio" name="horror-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="horror-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="horror-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="horror-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="horror-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Horror genre?</p>
+                    <textarea name="horror-reason" rows="3"></textarea>
+                </div>
+
+                <!-- Romance Genre Section -->
+                <div id="Romance-Genre" style="display: none;">
+                    <h3>Romance Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="romance-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="romance-openness-1">1. I enjoy romance anime with heartfelt and emotional stories.</label>
+                            <div>
+                                <label><input type="radio" name="romance-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="romance-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="romance-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="romance-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="romance-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Romance genre?</p>
+                    <textarea name="romance-reason" rows="3"></textarea>
+                </div>
+
+                <!-- SciFi Genre Section -->
+                <div id="SciFi-Genre" style="display: none;">
+                    <h3>Sci-Fi Genre</h3>
+                    <!-- Similar structure as Action Genre -->
+                    <fieldset class="trait-section" id="scifi-openness">
+                        <legend>Openness to Experience</legend>
+                        <div class="question">
+                            <label for="scifi-openness-1">1. I enjoy sci-fi anime with futuristic and technological themes.</label>
+                            <div>
+                                <label><input type="radio" name="scifi-openness-1" value="1"> 1</label>
+                                <label><input type="radio" name="scifi-openness-1" value="2"> 2</label>
+                                <label><input type="radio" name="scifi-openness-1" value="3"> 3</label>
+                                <label><input type="radio" name="scifi-openness-1" value="4"> 4</label>
+                                <label><input type="radio" name="scifi-openness-1" value="5"> 5</label>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <!-- Repeat similar blocks for other traits -->
+                    <p>Why do you like the Sci-Fi genre?</p>
+                    <textarea name="scifi-reason" rows="3"></textarea>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+
+        <!-- Thank You Page -->
+        <div class="form-section" id="thank-you" style="display: none; text-align: center;">
+            <h2>Thank You!</h2>
+            <p>Your responses have been submitted.</p>
+            <img src="https://gifdb.com/images/thumbnail/kazuma-sato-thank-you-anime-funny-dance-vaqdl5j1387ekr0x.gif" alt="Thank You GIF" style="max-width: 100%; height: auto; margin-top: 20px;">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
