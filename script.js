@@ -163,6 +163,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        // Ensure `result` is defined before using it
+        const result = calculateGenreScores(selectedGenres); // Calculate the genre scores before using it in the data object
+
         // Prepare data for API
         const data = {
             Pseudonym: pseudonym,
@@ -170,6 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Gender: gender,
             Email: email,
             WatchFrequency: watchFrequency,
+            YearLevel: document.getElementById("year-level").value, // Ensure YearLevel is included
             UGT_Questions: JSON.stringify({ ugtQ1, ugtQ2 }),
             SelectedGenres: JSON.stringify(selectedGenres),
             Action_Genre: JSON.stringify(genreQuestions.Action || {}),
@@ -180,7 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
             Horror_Genre: JSON.stringify(genreQuestions.Horror || {}),
             Romance_Genre: JSON.stringify(genreQuestions.Romance || {}),
             SciFi_Genre: JSON.stringify(genreQuestions.SciFi || {}),
-            Genre_Reasons: JSON.stringify(genreReasons)
+            Genre_Reasons: JSON.stringify(genreReasons),
+            Result: JSON.stringify(result) // Ensure Result is included and properly defined
         };
 
         try {
@@ -190,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify({ data: [data] }) // Ensure data is sent as an array to append in the same row
             });
 
             if (response.ok) {
@@ -318,6 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    
     function calculateAndDisplayGenreScores() {
         const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked"))
             .map(input => input.value);
@@ -399,6 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ensureInputsAreVisible(selectedGenres);
             const results = calculateGenreScores(selectedGenres);
             displayResultsPopup(results);
+            saveResultToGoogleSheet(results);
         }
     });
 
