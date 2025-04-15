@@ -288,7 +288,38 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    function displayResultsPopup(results) {
+    function generateGenreDescriptions(results, pseudonym) {
+        const traitDescriptions = {
+            O: "Openness, indicating that you value creativity, imagination, and exploring new ideas.",
+            C: "Conscientiousness, showing that you are organized, disciplined, and dependable.",
+            E: "Extraversion, suggesting that you thrive in social settings and enjoy high-energy activities.",
+            A: "Agreeableness, indicating that you value emotional connection, empathy, and harmony in relationships.",
+            N: "Neuroticism, reflecting a tendency to experience emotional intensity and sensitivity."
+        };
+
+        let description = `<h3>Personality Results for ${pseudonym}:</h3>`;
+
+        results.forEach(result => {
+            let highestTrait = null;
+            let highestScore = 0;
+
+            // Find the highest scoring trait for the genre
+            Object.keys(result.scores).forEach(trait => {
+                if (result.scores[trait] > highestScore) {
+                    highestScore = result.scores[trait];
+                    highestTrait = trait;
+                }
+            });
+
+            if (highestTrait) {
+                description += `<p>For the ${result.genre} genre, ${pseudonym} shows an extremely high ${traitDescriptions[highestTrait]}</p>`;
+            }
+        });
+
+        return description;
+    }
+
+    function displayResultsPopup(results, pseudonym) {
         const popup = document.createElement("div");
         popup.style.position = "fixed";
         popup.style.top = "50%";
@@ -314,7 +345,11 @@ document.addEventListener("DOMContentLoaded", () => {
             content += `<p>Neuroticism: ${result.traitLevels.N}</p>`;
         });
 
-        popup.innerHTML = content + '<button id="close-results-popup" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
+        content += generateGenreDescriptions(results, pseudonym); // Add personalized genre descriptions
+
+        content += '<button id="close-results-popup" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
+
+        popup.innerHTML = content;
 
         document.body.appendChild(popup);
 
@@ -323,7 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    
     function calculateAndDisplayGenreScores() {
         const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked"))
             .map(input => input.value);
@@ -404,7 +438,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked")).map(input => input.value);
             ensureInputsAreVisible(selectedGenres);
             const results = calculateGenreScores(selectedGenres);
-            displayResultsPopup(results);
+            const pseudonym = document.getElementById("pseudonym").value;
+            displayResultsPopup(results, pseudonym);
             saveResultToGoogleSheet(results);
         }
     });
