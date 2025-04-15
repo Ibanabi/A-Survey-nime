@@ -208,56 +208,201 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("An error occurred while submitting the survey. Please try again.");
         }
     });
+
+    function calculateGenreScores(selectedGenres) {
+        const traitLabels = {
+            O: "Openness",
+            C: "Conscientiousness",
+            E: "Extraversion",
+            A: "Agreeableness",
+            N: "Neuroticism"
+        };
+
+        const traitDescriptions = {
+            extremelyHigh: "Extremely High",
+            high: "High",
+            moderate: "Moderate",
+            low: "Low",
+            extremelyLow: "Extremely Low"
+        };
+
+        const results = selectedGenres.map(genre => {
+            const scores = { O: 0, C: 0, E: 0, A: 0, N: 0 };
+
+            // Calculate scores for each trait
+            Object.keys(scores).forEach(trait => {
+                for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
+                    const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
+                    const input = document.querySelector(`input[name='${inputName}']:checked`);
+                    console.log(`Looking for input: ${inputName}`); // Debugging log
+                    if (input) {
+                        const value = parseInt(input.value, 10);
+                        scores[trait] += value; // Sum up the scores
+                        console.log(`Found input: ${inputName}, Value: ${value}`); // Debugging log
+                    } else {
+                        console.warn(`No input found for Genre: ${genre}, Trait: ${trait}, Question: ${i}`); // Debugging log
+                    }
+                }
+            });
+
+            // Calculate percentages and determine trait levels
+            const traitLevels = {};
+            Object.keys(scores).forEach(trait => {
+                const percentage = (scores[trait] / 25) * 100; // Divide by max score (5 questions * 5 max score)
+                if (percentage >= 80) {
+                    traitLevels[trait] = traitDescriptions.extremelyHigh;
+                } else if (percentage >= 60) {
+                    traitLevels[trait] = traitDescriptions.high;
+                } else if (percentage >= 40) {
+                    traitLevels[trait] = traitDescriptions.moderate;
+                } else if (percentage >= 20) {
+                    traitLevels[trait] = traitDescriptions.low;
+                } else {
+                    traitLevels[trait] = traitDescriptions.extremelyLow;
+                }
+            });
+
+            return { genre, scores, percentages: {
+                O: (scores.O / 25) * 100,
+                C: (scores.C / 25) * 100,
+                E: (scores.E / 25) * 100,
+                A: (scores.A / 25) * 100,
+                N: (scores.N / 25) * 100
+            }, traitLevels };
+        });
+
+        return results;
+    }
+
+    function ensureInputsAreVisible(selectedGenres) {
+        selectedGenres.forEach(genre => {
+            const genreSection = document.getElementById(`${genre}-Genre`);
+            if (genreSection) {
+                genreSection.style.display = "block"; // Ensure the section is visible
+            }
+        });
+    }
+
+    function displayResultsPopup(results) {
+        const popup = document.createElement("div");
+        popup.style.position = "fixed";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%)";
+        popup.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+        popup.style.color = "white";
+        popup.style.padding = "20px";
+        popup.style.borderRadius = "10px";
+        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        popup.style.zIndex = "1000";
+        popup.style.textAlign = "center";
+        popup.style.maxWidth = "80%";
+        popup.style.overflowY = "auto";
+
+        let content = "<h2>The Results Are:</h2>";
+        results.forEach(result => {
+            content += `<h3>${result.genre}</h3>`;
+            content += `<p>Openness: ${result.traitLevels.O}</p>`;
+            content += `<p>Conscientiousness: ${result.traitLevels.C}</p>`;
+            content += `<p>Extraversion: ${result.traitLevels.E}</p>`;
+            content += `<p>Agreeableness: ${result.traitLevels.A}</p>`;
+            content += `<p>Neuroticism: ${result.traitLevels.N}</p>`;
+        });
+
+        popup.innerHTML = content + '<button id="close-results-popup" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
+
+        document.body.appendChild(popup);
+
+        document.getElementById("close-results-popup").addEventListener("click", () => {
+            popup.remove();
+        });
+    }
+
+    function calculateAndDisplayGenreScores() {
+        const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked"))
+            .map(input => input.value);
+
+        const traitLabels = {
+            O: "Openness",
+            C: "Conscientiousness",
+            E: "Extraversion",
+            A: "Agreeableness",
+            N: "Neuroticism"
+        };
+
+        const results = selectedGenres.map(genre => {
+            const scores = { O: 0, C: 0, E: 0, A: 0, N: 0 };
+
+            // Calculate scores for each trait for the selected genre
+            Object.keys(scores).forEach(trait => {
+                for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
+                    const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
+                    const input = document.querySelector(`input[name='${inputName}']:checked`);
+                    if (input) {
+                        scores[trait] += parseInt(input.value, 10); // Sum up the scores
+                    }
+                }
+            });
+
+            return {
+                genre,
+                scores
+            };
+        });
+
+        // Create a popup to display the results
+        const popup = document.createElement("div");
+        popup.style.position = "fixed";
+        popup.style.top = "50%";
+        popup.style.left = "50%";
+        popup.style.transform = "translate(-50%, -50%)";
+        popup.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+        popup.style.color = "white";
+        popup.style.padding = "20px";
+        popup.style.borderRadius = "10px";
+        popup.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        popup.style.zIndex = "1000";
+        popup.style.textAlign = "center";
+        popup.style.maxWidth = "80%";
+        popup.style.overflowY = "auto";
+
+        let content = "<h2>Personality Traits by Genre</h2><table style='width: 100%; border-collapse: collapse;'>";
+        content += "<tr><th style='border: 1px solid white; padding: 8px;'>Genre</th>";
+        Object.values(traitLabels).forEach(label => {
+            content += `<th style='border: 1px solid white; padding: 8px;'>${label}</th>`;
+        });
+        content += "</tr>";
+
+        results.forEach(result => {
+            content += `<tr><td style='border: 1px solid white; padding: 8px;'>${result.genre}</td>`;
+            Object.keys(result.scores).forEach(trait => {
+                content += `<td style='border: 1px solid white; padding: 8px;'>${result.scores[trait]}</td>`;
+            });
+            content += "</tr>";
+        });
+
+        content += "</table><button id='close-popup' style='margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;'>Close</button>";
+        popup.innerHTML = content;
+
+        document.body.appendChild(popup);
+
+        document.getElementById("close-popup").addEventListener("click", () => {
+            popup.remove();
+        });
+    }
+
+    // Show results on thank-you page
+    const thankYouPage = document.getElementById("thank-you");
+    const observer = new MutationObserver(() => {
+        if (thankYouPage.style.display === "block") {
+            const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked")).map(input => input.value);
+            ensureInputsAreVisible(selectedGenres);
+            const results = calculateGenreScores(selectedGenres);
+            displayResultsPopup(results);
+        }
+    });
+
+    observer.observe(thankYouPage, { attributes: true, attributeFilter: ["style"] });
 });
 
-function calculatePersonality(answers) {
-    const traits = {
-        Openness: 0,
-        Conscientiousness: 0,
-        Extraversion: 0,
-        Agreeableness: 0,
-        Neuroticism: 0
-    };
 
-    // Iterate through answers and sum up scores for each trait
-    for (const [key, value] of Object.entries(answers)) {
-        if (key.includes('openness')) {
-            traits.Openness += parseInt(value, 10);
-        } else if (key.includes('conscientiousness')) {
-            traits.Conscientiousness += parseInt(value, 10);
-        } else if (key.includes('extraversion')) {
-            traits.Extraversion += parseInt(value, 10);
-        } else if (key.includes('agreeableness')) {
-            traits.Agreeableness += parseInt(value, 10);
-        } else if (key.includes('neuroticism')) {
-            traits.Neuroticism += parseInt(value, 10);
-        }
-    }
-
-    // Calculate average score for each trait
-    const traitCounts = {
-        Openness: 10, // Assuming 10 questions per trait
-        Conscientiousness: 10,
-        Extraversion: 10,
-        Agreeableness: 10,
-        Neuroticism: 10
-    };
-
-    for (const trait in traits) {
-        traits[trait] = (traits[trait] / traitCounts[trait]).toFixed(2); // Average score
-    }
-
-    return traits;
-}
-
-// Example usage:
-// const answers = {
-//     'action-openness-1': '4',
-//     'action-conscientiousness-1': '3',
-//     'action-extraversion-1': '5',
-//     'action-agreeableness-1': '2',
-//     'action-neuroticism-1': '1',
-//     ... // Other answers
-// };
-// const personality = calculatePersonality(answers);
-// console.log(personality);
