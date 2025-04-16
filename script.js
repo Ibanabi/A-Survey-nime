@@ -144,6 +144,29 @@ document.addEventListener("DOMContentLoaded", () => {
         const watchFrequency = document.getElementById("watch-frequency").value;
         const ugtQ1 = document.querySelector("select[name='ugt-q1']").value;
         const ugtQ2 = document.querySelector("select[name='ugt-q2']").value;
+        const ugtQ3 = document.querySelector("select[name='ugt-q3']").value;
+        const ugtQ4 = document.querySelector("select[name='ugt-q4']").value;
+        const ugtQ5 = document.querySelector("select[name='ugt-q5']").value;
+        const ugtQ6 = document.querySelector("select[name='ugt-q6']").value;
+        const ugtQ7 = document.querySelector("select[name='ugt-q7']").value;
+        const ugtQ8 = document.querySelector("select[name='ugt-q8']").value;
+        const ugtQ9 = document.querySelector("select[name='ugt-q9']").value;
+        const ugtQ10 = document.querySelector("select[name='ugt-q10']").value;
+        const ugtQ11 = document.querySelector("select[name='ugt-q11']").value;
+        const ugtQ12 = document.querySelector("select[name='ugt-q12']").value;
+        const ugtQ13 = document.querySelector("select[name='ugt-q13']").value;
+        const ugtQ14 = document.querySelector("select[name='ugt-q14']").value;
+        const ugtQ15 = document.querySelector("select[name='ugt-q15']").value;
+        const ugtQ16 = document.querySelector("select[name='ugt-q16']").value;
+        const ugtQ17 = document.querySelector("select[name='ugt-q17']").value;
+        const ugtQ18 = document.querySelector("select[name='ugt-q18']").value;
+        const ugtQ19 = document.querySelector("select[name='ugt-q19']").value;
+        const ugtQ20 = document.querySelector("select[name='ugt-q20']").value;
+        const ugtQ21 = document.querySelector("select[name='ugt-q21']").value;
+        const ugtQ22 = document.querySelector("select[name='ugt-q22']").value;
+        const ugtQ23 = document.querySelector("select[name='ugt-q23']").value;
+        const ugtQ24 = document.querySelector("select[name='ugt-q24']").value;
+        const ugtQ25 = document.querySelector("select[name='ugt-q25']").value;
 
         // Collect data from Section 3
         const genreQuestions = {};
@@ -174,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Email: email,
             WatchFrequency: watchFrequency,
             YearLevel: document.getElementById("year-level").value, // Ensure YearLevel is included
-            UGT_Questions: JSON.stringify({ ugtQ1, ugtQ2 }),
+            UGT_Questions: JSON.stringify({ ugtQ1, ugtQ2, ugtQ3, ugtQ4, ugtQ5, ugtQ6, ugtQ7, ugtQ8, ugtQ9, ugtQ10, ugtQ11, ugtQ12, ugtQ13, ugtQ14, ugt15, ugtQ16, ugtQ17, ugtQ18, ugtQ19, ugtQ20, ugtQ21, ugtQ22, ugtQ23, ugtQ24, ugtQ25 }),
             SelectedGenres: JSON.stringify(selectedGenres),
             Action_Genre: JSON.stringify(genreQuestions.Action || {}),
             Adventure_Genre: JSON.stringify(genreQuestions.Adventure || {}),
