@@ -197,7 +197,11 @@ document.addEventListener("DOMContentLoaded", () => {
             Email: email,
             WatchFrequency: watchFrequency,
             YearLevel: document.getElementById("year-level").value, // Ensure YearLevel is included
-            UGT_Questions: JSON.stringify({ ugtQ1, ugtQ2, ugtQ3, ugtQ4, ugtQ5, ugtQ6, ugtQ7, ugtQ8, ugtQ9, ugtQ10, ugtQ11, ugtQ12, ugtQ13, ugtQ14, ugtQ15, ugtQ16, ugtQ17, ugtQ18, ugtQ19, ugtQ20, ugtQ21, ugtQ22, ugtQ23, ugtQ24, ugtQ25 }),
+            UGT_Questions: JSON.stringify({
+                ugtQ1, ugtQ2, ugtQ3, ugtQ4, ugtQ5, ugtQ6, ugtQ7, ugtQ8, ugtQ9, ugtQ10,
+                ugtQ11, ugtQ12, ugtQ13, ugtQ14, ugtQ15, ugtQ16, ugtQ17, ugtQ18, ugtQ19, ugtQ20,
+                ugtQ21, ugtQ22, ugtQ23, ugtQ24, ugtQ25
+            }),
             SelectedGenres: JSON.stringify(selectedGenres),
             Action_Genre: JSON.stringify(genreQuestions.Action || {}),
             Adventure_Genre: JSON.stringify(genreQuestions.Adventure || {}),
@@ -469,5 +473,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(thankYouPage, { attributes: true, attributeFilter: ["style"] });
 });
-
 
