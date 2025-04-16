@@ -30,10 +30,10 @@ input, select, textarea, button {
 }
 
 button {
-    display: block; /* Center the button */
-    margin: 20px auto; /* Add spacing and center horizontally */
-    width: auto; /* Adjust width to fit content */
-    padding: 10px 20px; /* Add padding for better appearance */
+    display: block;
+    margin: 20px auto; 
+    width: auto; 
+    padding: 10px 20px; 
     background-color: #4caf50;
     cursor: pointer;
 }
@@ -46,8 +46,8 @@ button:hover {
     padding: 30px;
     margin: 40px auto;
     max-width: 800px;
-    background-color: #1e1e1e; /* Dark mode background */
-    color: #ffffff; /* Brighter text */
+    background-color: #1e1e1e; 
+    color: #ffffff; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: left;
@@ -56,10 +56,47 @@ button:hover {
 }
 
 #selectedGenreNames {
-    margin-top: 10px; /* Adjust spacing from the Next button */
+    margin-top: 10px; 
     font-size: 16px;
     font-weight: bold;
-    color: #ffffff; /* Brighter text */
+    color: #ffffff; 
     text-align: center;
     font-family: Arial, sans-serif;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .form-section {
+        padding: 15px;
+        margin: 10px auto;
+        max-width: 100%;
+    }
+
+    input, select, textarea, button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    h2, h3 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    label {
+        font-size: 14px;
+    }
+
+    textarea {
+        resize: none;
+    }
 }
