@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Create and display the introductory popup
+    
     const introPopup = document.createElement("div");
     introPopup.innerHTML = `
         <div style="
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.body.appendChild(introPopup);
 
-    // Add fade-in animation
+    
     const style = document.createElement("style");
     style.textContent = `
         @keyframes fadeIn {
@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    // Close popup logic
+    // Close popup 
     document.getElementById("close-intro-popup").addEventListener("click", () => {
         introPopup.remove();
     });
@@ -77,14 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setTimeout(() => {
             popup.remove();
-        }, 3000); // Remove popup after 3 seconds
+        }, 3000); 
     }
 
     // Navigation logic
     toSection2Button.addEventListener("click", () => {
-        section2.style.display = "block"; // Show section 2
-        toSection2Button.style.display = "none"; // Hide the button after clicking
-        showScrollDownPopup(); // Show popup
+        section2.style.display = "block"; // 
+        toSection2Button.style.display = "none";
+        showScrollDownPopup(); 
     });
 
     toSection3Button.addEventListener("click", () => {
@@ -94,9 +94,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        section3.style.display = "block"; // Show section 3
-        toSection3Button.style.display = "none"; // Hide the button after clicking
-        showScrollDownPopup(); // Show popup
+        section3.style.display = "block"; 
+        toSection3Button.style.display = "none"; 
+        showScrollDownPopup();
 
         // Show questions for selected genres
         selectedGenres.forEach(genre => {
@@ -107,20 +107,20 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Form submission logic
+    
     genreForm.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Dynamically add 'required' attribute to selected genres only
+        
         const selectedGenres = Array.from(document.querySelectorAll("input[name='genre']:checked"))
             .map(genre => genre.value);
 
-        // Remove 'required' from all genre fields initially
+        
         document.querySelectorAll("#section-3 input, #section-3 textarea").forEach(input => {
             input.removeAttribute("required");
         });
 
-        // Add 'required' to fields of selected genres
+        
         selectedGenres.forEach(genre => {
             const genreSection = document.getElementById(`${genre}-Genre`);
             if (genreSection) {
@@ -130,13 +130,13 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Validate the form
+        
         if (!genreForm.checkValidity()) {
             alert("Please complete all required fields for the selected genres.");
             return;
         }
 
-        // Collect data from Section 1
+        
         const pseudonym = document.getElementById("pseudonym").value;
         const age = document.getElementById("age").value;
         const gender = document.getElementById("gender").value;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const ugtQ24 = document.querySelector("select[name='ugt-q24']").value;
         const ugtQ25 = document.querySelector("select[name='ugt-q25']").value;
 
-        // Collect data from Section 3
+        
         const genreQuestions = {};
         const genreReasons = {};
         selectedGenres.forEach(genre => {
@@ -179,14 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 return acc;
             }, {});
 
-            // Collect free-response answers
+           
             const reasonTextarea = document.querySelector(`#${genre}-Genre textarea[name='${genre.toLowerCase()}-reason']`);
             if (reasonTextarea) {
                 genreReasons[genre] = reasonTextarea.value;
             }
         });
 
-        // Ensure `result` is defined before using it
+        
         const result = calculateGenreScores(selectedGenres); // Calculate the genre scores before using it in the data object
 
         // Prepare data for API
@@ -196,7 +196,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Gender: gender,
             Email: email,
             WatchFrequency: watchFrequency,
-            YearLevel: document.getElementById("year-level").value, // Ensure YearLevel is included
+            YearLevel: document.getElementById("year-level").value, 
             UGT_Questions: JSON.stringify({
                 ugtQ1, ugtQ2, ugtQ3, ugtQ4, ugtQ5, ugtQ6, ugtQ7, ugtQ8, ugtQ9, ugtQ10,
                 ugtQ11, ugtQ12, ugtQ13, ugtQ14, ugtQ15, ugtQ16, ugtQ17, ugtQ18, ugtQ19, ugtQ20,
@@ -212,11 +212,11 @@ document.addEventListener("DOMContentLoaded", () => {
             Romance_Genre: JSON.stringify(genreQuestions.Romance || {}),
             SciFi_Genre: JSON.stringify(genreQuestions.SciFi || {}),
             Genre_Reasons: JSON.stringify(genreReasons),
-            Result: JSON.stringify(result) // Ensure Result is included and properly defined
+            Result: JSON.stringify(result) 
         };
 
         try {
-            // Send data to Google Sheet API
+            
             const response = await fetch("https://sheetdb.io/api/v1/2cjorv61rowv1", {
                 method: "POST",
                 headers: {
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const results = selectedGenres.map(genre => {
             const scores = { O: 0, C: 0, E: 0, A: 0, N: 0 };
 
-            // Calculate scores for each trait
+            
             Object.keys(scores).forEach(trait => {
                 for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
@@ -277,10 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            // Calculate percentages and determine trait levels
+            
             const traitLevels = {};
             Object.keys(scores).forEach(trait => {
-                const percentage = (scores[trait] / 25) * 100; // Divide by max score (5 questions * 5 max score)
+                const percentage = (scores[trait] / 25) * 100; // Divide by max score. Dito (5 questions * 5 max score)
                 if (percentage >= 80) {
                     traitLevels[trait] = traitDescriptions.extremelyHigh;
                 } else if (percentage >= 60) {
@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedGenres.forEach(genre => {
             const genreSection = document.getElementById(`${genre}-Genre`);
             if (genreSection) {
-                genreSection.style.display = "block"; // Ensure the section is visible
+                genreSection.style.display = "block"; // the section is visible (sec1-3)
             }
         });
     }
@@ -330,7 +330,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let highestTrait = null;
             let highestScore = 0;
 
-            // Find the highest scoring trait for the genre
+            // this will find the highest scoring trait for the genre
             Object.keys(result.scores).forEach(trait => {
                 if (result.scores[trait] > highestScore) {
                     highestScore = result.scores[trait];
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", () => {
             content += `<p>Neuroticism: ${result.traitLevels.N}</p>`;
         });
 
-        content += generateGenreDescriptions(results, pseudonym); // Add personalized genre descriptions
+        content += generateGenreDescriptions(results, pseudonym); // results
 
         content += '<button id="close-results-popup" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
 
@@ -400,9 +400,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const results = selectedGenres.map(genre => {
             const scores = { O: 0, C: 0, E: 0, A: 0, N: 0 };
 
-            // Calculate scores for each trait for the selected genre
+            
             Object.keys(scores).forEach(trait => {
-                for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
+                for (let i = 1; i <= 5; i++) { 
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
                     const input = document.querySelector(`input[name='${inputName}']:checked`);
                     if (input) {
@@ -417,7 +417,7 @@ document.addEventListener("DOMContentLoaded", () => {
             };
         });
 
-        // Create a popup to display the results
+       
         const popup = document.createElement("div");
         popup.style.position = "fixed";
         popup.style.top = "50%";
@@ -458,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Show results on thank-you page
+    //  
     const thankYouPage = document.getElementById("thank-you");
     const observer = new MutationObserver(() => {
         if (thankYouPage.style.display === "block") {
