@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UGT and BIG5 Personality Survey</title>
+    <title>You Are What You Watch: Survey</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="survey-container">
-        <!-- Section 1: Information -->
+        
         <div class="form-section" id="section-1">
             <h2>Basic Information</h2>
             <label for="pseudonym">Pseudonym:</label>
@@ -252,7 +252,7 @@
             <button id="to-section-2">Next</button>
         </div>
 
-        <!-- Section 2: Genre Selection -->
+        
         <div class="form-section" id="section-2" style="display: none;">
             <h2>Pick Your Favorite Genre(s)</h2>
             <p>You can select up to 3 anime genre(s): Each has 25 questions</p>
@@ -268,17 +268,17 @@
             <button id="to-section-3">Next</button>
         </div>
 
-        <!-- Section 3: Questions -->
+        
         <div class="form-section" id="section-3" style="display: none;">
             <h2>BIG5:OCEAN - (1)Strongly Disagree - (5) Strongly Agree</h2>
             <form id="genre-questions">
                 <div id="Action-Genre" style="display: none;">
                     <h3>Action Genre</h3>
 
-                    <!-- OPENSNESS to Experience -->
+                    
                     <fieldset class="trait-section" id="action-openness">
                         <legend>Openness to Experience - (Openminded, Imaginative, Curious)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="action-o-1">(1).I prefer protagonists who defy genre rules (e.g., chaotic anti-heroes) over classic hero’s journey archetypes.</label>
                             <div>
@@ -325,13 +325,13 @@
                             </div>
                             
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Openness -->
+                       
                     </fieldset>
 
-                    <!-- CONSCIENTIOUSNESS -->
+                    
                     <fieldset class="trait-section" id="action-conscientiousness">
                         <legend>Conscientiousness-(Disciplined, Organized, Dependable)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="action-c-1">(1). I appreciate action anime where battles are methodically planned.</label>
                             <div>
@@ -378,13 +378,13 @@
                             </div>
                            
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Conscientiousness -->
+                        
                     </fieldset>
 
-                    <!-- EXTRAVERSION -->
+                    
                     <fieldset class="trait-section" id="action-extraversion">
                         <legend>Extraversion - (Adrenaline, Social)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="action-e-1">(1). I like squad banters more than lone-wolf protagonists.</label>
                             <div>
@@ -433,13 +433,13 @@
                                 <label><input type="radio" name="action-e-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Extraversion -->
+                        
                     </fieldset>
 
-                    <!-- AGREEABLENESS -->
+                   
                     <fieldset class="trait-section" id="action-agreeableness">
                         <legend>Agreeableness - (Teamwork, Empathy, Harmony)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="action-a-1">1. I value action anime that emphasizes teamwork and camaraderie.</label>
                             <div>
@@ -489,13 +489,13 @@
                             </div>
                         </div>
                         
-                        <!-- Repeat similar blocks for questions 2 to 10 for Agreeableness -->
+                        
                     </fieldset>
 
-                    <!-- NEUROTICISM -->
+                    
                     <fieldset class="trait-section" id="action-neuroticism">
                         <legend>Neuroticism - (Darker, Emotionally Intense)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="action-n-1">(1). Dark themes like trauma or existential dread (e.g., Goblin Slayer ) deepen an Action anime for me.</label>
                             <div class="question-image">
@@ -544,18 +544,18 @@
                                 <label><input type="radio" name="action-n-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Neuroticism -->
+                        
                     </fieldset>
 
-                    <!-- Optional Free-Response -->
+                    
                     <p>Why do you like the Action genre?</p>
                     <textarea name="action-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Adventure Genre Section -->
+                
                 <div id="Adventure-Genre" style="display: none;">
                     <h3>Adventure Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="adventure-openness">
                         <legend>Openness to Experience - (Creativity, Exploration)</legend>
                         <div class="question">
@@ -606,7 +606,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="adventure-conscientiousness">
                         <legend>Conscientiousness-(Planning, Clear Goals, and Logical Stakes)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="adventure-c-1">(1). I prefer adventures where the characters have a clear set goal in mind rather than going with the flow.</label>
                             <div>
@@ -657,7 +657,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="adventure-extraversion">
                         <legend>Extraversion - (Social Bonds, Discovery)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="adventure-e-1">(1). Group adventures (e.g., Nanatsu No Taizai (Seven Deadly Sins)) is what I vibe with than solo travels</label>
                             <div class="question-image">
@@ -703,11 +703,11 @@
                                 <label><input type="radio" name="adventure-e-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Extraversion -->
+                        
                     </fieldset>
                     <fieldset class="trait-section" id="adventure-agreeableness">
                         <legend>Agreeableness - (Teamwork, Empathy, Harmony)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="adventure-a-1">(1). I root for heroes motivated by friendship or protecting others (e.g., One Piece's Luffy).</label>
                             <div class="question-image">
@@ -759,7 +759,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="adventure-neuroticism">
                         <legend>Neuroticism - (Darker, Emotionally Intense)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="adventure-n-1">(1). Survival-focused adventures (e.g., Sword Art Online's death games) thrill me despite the stress.</label>
                             <div class="question-image">
@@ -808,18 +808,18 @@
                                 <label><input type="radio" name="adventure-n-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Neuroticism -->
+                        
                     </fieldset>
                         
-                    <!-- Repeat similar blocks for other traits -->
+                    
                     <p>Why do you like the Adventure genre?</p>
                     <textarea name="adventure-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Comedy Genre Section -->
+                
                 <div id="Comedy-Genre" style="display: none;">
                     <h3>Comedy Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                   
                     <fieldset class="trait-section" id="comedy-openness">
                         <legend>Openness to Experience - (Different Types of Humor, Satire, Parody)</legend>
                         <div class="question">
@@ -870,7 +870,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="comedy-conscientiousness">
                         <legend>Conscientiousness-(Consistency, Balance)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="comedy-c-1">(1). You find it corny if the joke is used over and over again in the show, except when it's a favourite character making the joke.</label>
                             <div>
@@ -918,7 +918,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="comedy-extraversion">
                         <legend>Extraversion - (Social Bonds, Discovery)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="comedy-e-1">(1). Chaotic ensemble casts make me laugh more than solo comedies.</label>
                             <div>
@@ -964,11 +964,11 @@
                                 <label><input type="radio" name="comedy-e-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Extraversion -->
+                        
                     </fieldset>
                     <fieldset class="trait-section" id="comedy-agreeableness">
                         <legend>Agreeableness - (Teamwork, Empathy, Harmony)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="comedy-a-1">(1). I prefer comedy anime where the characters, despite the chaos, clearly care about each other.</label>
                             <div>
@@ -1014,7 +1014,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="comedy-neuroticism">
                         <legend>Neuroticism - (Darker, Emotionally Intense)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="comedy-n-1">(1). I avoid comedy anime that involves a lot of yelling or emotional explosions.</label>
                             <div>
@@ -1057,17 +1057,17 @@
                                 <label><input type="radio" name="comedy-n-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Neuroticism -->
+                        
                     </fieldset>
-                    <!-- Repeat similar blocks for other traits -->
+                   
                     <p>Why do you like the Comedy genre?</p>
                     <textarea name="comedy-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Drama Genre Section -->
+                
                 <div id="Drama-Genre" style="display: none;">
                     <h3>Drama Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="drama-openness">
                         <legend>Openness to Experience</legend>
                         <div class="question">
@@ -1124,7 +1124,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="drama-conscientiousness">
                         <legend>Conscientiousness-(Consistency, Balance)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="drama-c-1">(1). Do you admire characters who dedicate themselves to learning a new skill or job as a way to understand emotions and connect with others? (e.g., Violet Evergarden)</label>
                             <div class="question-image">
@@ -1175,7 +1175,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="drama-extraversion">
                         <legend>Extraversion - (Social Bonds, Discovery)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="drama-e-1">(1). I enjoy watching anime where the main character has a loud, energetic personality. </label>
                             <div>
@@ -1218,11 +1218,11 @@
                                 <label><input type="radio" name="drama-e-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Extraversion -->
+                        
                     </fieldset>
                     <fieldset class="trait-section" id="drama-agreeableness">
                         <legend>Agreeableness - (Teamwork, Empathy, Harmony)</legend>
-                        <!-- Question 1 -->
+                        
                         <div class="question">
                             <label for="drama-a-1">(1). When you mediate between two enemies in the heat of an argument, do you impose your judgment to make them stop?</label>
                             <div>
@@ -1268,7 +1268,7 @@
                     </fieldset>
                     <fieldset class="trait-section" id="drama-neuroticism">
                         <legend>Neuroticism - (Darker, Emotionally Intense)</legend>
-                        <!-- Question 1 -->
+                       
                         <div class="question">
                             <label for="drama-n-1">(1). When a character feels like they’re not good enough, I start reflecting on my own self-worth too (e.g., Monster's Tenma Kenzo).</label>
                             <div class="question-image">
@@ -1320,17 +1320,17 @@
                                 <label><input type="radio" name="drama-n-5" value="5"> 5</label>
                             </div>
                         </div>
-                        <!-- Repeat similar blocks for questions 2 to 10 for Neuroticism -->
+                        
                     </fieldset>
-                    <!-- Repeat similar blocks for other traits -->
+                    
                     <p>Why do you like the Drama genre?</p>
                     <textarea name="drama-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Fantasy Genre Section -->
+               
                 <div id="Fantasy-Genre" style="display: none;">
                     <h3>Fantasy Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="fantasy-openness">
                         <legend>Openness to Experience</legend>
                         <div class="question">
@@ -1600,15 +1600,15 @@
                             </div>
                         </div>
                     </fieldset>
-                    <!-- Repeat similar blocks for other traits -->
+                    
                     <p>Why do you like the Fantasy genre?</p>
                     <textarea name="fantasy-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Horror Genre Section -->
+                
                 <div id="Horror-Genre" style="display: none;">
                     <h3>Horror Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="horror-openness">
                         <legend>Openness to Experience</legend>
                         <div class="question">
@@ -1854,15 +1854,15 @@
                         </div>
                     </fieldset>
                     
-                    <!-- Repeat similar blocks for other traits -->
+                   
                     <p>Why do you like the Horror genre?</p>
                     <textarea name="horror-reason" rows="3"></textarea>
                 </div>
 
-                <!-- Romance Genre Section -->
+                
                 <div id="Romance-Genre" style="display: none;">
                     <h3>Romance Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="romance-openness">
                         <legend>Openness to Experience</legend>
                         <div class="question">
@@ -2118,15 +2118,15 @@
                             </div>
                         </div>
                     </fieldset>
-                    <!-- Repeat similar blocks for other traits -->
+                    
                     <p>Why do you like the Romance genre?</p>
                     <textarea name="romance-reason" rows="3"></textarea>
                 </div>
 
-                <!-- SciFi Genre Section -->
+                
                 <div id="SciFi-Genre" style="display: none;">
                     <h3>Sci-Fi Genre</h3>
-                    <!-- Similar structure as Action Genre -->
+                    
                     <fieldset class="trait-section" id="scifi-openness">
                         <legend>Openness to Experience</legend>
                         <div class="question">
@@ -2370,7 +2370,7 @@
                             </div>
                         </div>
                     </fieldset>
-                    <!-- Repeat similar blocks for other traits -->
+                    
                     <p>Why do you like the Sci-Fi genre?</p>
                     <textarea name="scifi-reason" rows="3"></textarea>
                 </div>
@@ -2379,7 +2379,7 @@
             </form>
         </div>
 
-        <!-- Thank You Page -->
+        
         <div class="form-section" id="thank-you" style="display: none; text-align: center;">
             <h2>Thank You!</h2>
             <p>Your responses have been submitted.</p>
