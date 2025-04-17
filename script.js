@@ -2,11 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const introPopup = document.createElement("div");
     introPopup.innerHTML = `
-        <div style="
+        <div id="intro-popup" style="
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 600px;
+            height: auto;
             background-color: rgba(0, 0, 0, 0.9);
             color: white;
             padding: 20px;
@@ -14,38 +17,73 @@ document.addEventListener("DOMContentLoaded", () => {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             text-align: center;
-            animation: fadeIn 0.5s ease;
         ">
-            <p>Hello, this is the researcher. For the sake of anonymity I will be asking for a pseudonym. This survey will have 2 sections:</p>
-            <p>(1) UGT - why you watch anime and what you get from it;</p>
-            <p>(2) BIG5 - questions will be asked to see whether there's a correlation between the anime genres you watch and your personality type.</p>
-            <p>For the sake of consistency, do make sure to be honest. At the end you will see what your personality type is according to the Big 5 OCEAN: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism (Emotional Instability).</p>
-            <p>This will only take up to 10-15 minutes of your time. Thank you!</p>
-            <button id="close-intro-popup" style="
-                margin-top: 10px;
-                padding: 10px 20px;
-                background-color: #007BFF;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-            ">Got it!</button>
+            <div id="intro-section-1">
+                <p>Hello, this is the researcher. For the sake of anonymity I will be asking for a pseudonym. This survey will have 2 sections:</p>
+                <p>(1) UGT - why you watch anime and what you get from it;</p>
+                <p>(2) BIG5 - questions will be asked to see whether there's a correlation between the anime genres you watch and your personality type.</p>
+                <button id="next-intro-section" style="
+                    margin-top: 10px;
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Next</button>
+            </div>
+            <div id="intro-section-2" style="display: none;">
+                <p>For the sake of consistency, do make sure to be honest. At the end you will see what your personality type is according to the Big 5 OCEAN: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism (Emotional Instability).</p>
+                <p>This will only take up to 10-15 minutes of your time. Thank you!</p>
+                <button id="close-intro-popup" style="
+                    margin-top: 10px;
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Got it!</button>
+            </div>
         </div>
     `;
 
     document.body.appendChild(introPopup);
 
-    
     const style = document.createElement("style");
     style.textContent = `
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
+        @keyframes fadeInSlideDown {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        #intro-popup {
+            animation: fadeInSlideDown 0.5s ease;
+        }
     `;
     document.head.appendChild(style);
 
-    // Close popup 
+    // Add navigation logic for the intro popup
+    const nextIntroSectionButton = document.getElementById("next-intro-section");
+    const introSection1 = document.getElementById("intro-section-1");
+    const introSection2 = document.getElementById("intro-section-2");
+
+    nextIntroSectionButton.addEventListener("click", () => {
+        introSection1.style.display = "none";
+        introSection2.style.display = "block";
+    });
+
     document.getElementById("close-intro-popup").addEventListener("click", () => {
         introPopup.remove();
     });
@@ -473,4 +511,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(thankYouPage, { attributes: true, attributeFilter: ["style"] });
 });
-
