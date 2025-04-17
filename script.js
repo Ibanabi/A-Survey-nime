@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    
+    // Add navigation logic for the intro popup
     const nextIntroSectionButton = document.getElementById("next-intro-section");
     const introSection1 = document.getElementById("intro-section-1");
     const introSection2 = document.getElementById("intro-section-2");
@@ -101,10 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.createElement("div");
         popup.textContent = "Scroll down to continue!";
         popup.style.position = "fixed";
-        popup.style.bottom = "20px"; 
-        popup.style.left = "50%"; 
-        popup.style.transform = "translateX(-50%)"; 
-        popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; 
+        popup.style.bottom = "20px"; // Place at the bottom of the screen
+        popup.style.left = "50%"; // Center horizontally
+        popup.style.transform = "translateX(-50%)"; // Adjust for true centering
+        popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Transparent dark background
         popup.style.color = "white";
         popup.style.padding = "10px 20px";
         popup.style.borderRadius = "5px";
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const result = calculateGenreScores(selectedGenres); // Calculate the genre scores before using it in the data object
 
-        // API
+        // Prepare data for API
         const data = {
             Pseudonym: pseudonym,
             Age: age,
@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ data: [data] }) 
+                body: JSON.stringify({ data: [data] }) // Ensure data is sent as an array to append in the same row
             });
 
             if (response.ok) {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 section1.style.display = "none";
                 section2.style.display = "none";
                 section3.style.display = "none";
-                thankYou.style.display = "block"; // Only show the thx page
+                thankYou.style.display = "block"; // Only show the thank-you page
             } else {
                 console.error("Submission failed with status:", response.status);
                 alert("Failed to submit the survey. Please try again.");
@@ -301,16 +301,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             
             Object.keys(scores).forEach(trait => {
-                for (let i = 1; i <= 5; i++) { // Assuming kung 5 questions per trait
+                for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
                     const input = document.querySelector(`input[name='${inputName}']:checked`);
                     console.log(`Looking for input: ${inputName}`); // Debugging log
                     if (input) {
                         const value = parseInt(input.value, 10);
-                        scores[trait] += value; // Sum up the scores d2
-                        console.log(`Found input: ${inputName}, Value: ${value}`); // Debugging
+                        scores[trait] += value; // Sum up the scores
+                        console.log(`Found input: ${inputName}, Value: ${value}`); // Debugging log
                     } else {
-                        console.warn(`No input found for Genre: ${genre}, Trait: ${trait}, Question: ${i}`); 
+                        console.warn(`No input found for Genre: ${genre}, Trait: ${trait}, Question: ${i}`); // Debugging log
                     }
                 }
             });
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let highestTrait = null;
             let highestScore = 0;
 
-            // highest score d2
+            // this will find the highest scoring trait for the genre
             Object.keys(result.scores).forEach(trait => {
                 if (result.scores[trait] > highestScore) {
                     highestScore = result.scores[trait];
@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
                     const input = document.querySelector(`input[name='${inputName}']:checked`);
                     if (input) {
-                        scores[trait] += parseInt(input.value, 10); // Sum the scores here
+                        scores[trait] += parseInt(input.value, 10); // Sum up the scores
                     }
                 }
             });
@@ -567,5 +567,31 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     observer.observe(thankYouPage, { attributes: true, attributeFilter: ["style"] });
+
+    
+    const progressBarContainer = document.createElement("div");
+    progressBarContainer.style.position = "fixed";
+    progressBarContainer.style.top = "0";
+    progressBarContainer.style.right = "0";
+    progressBarContainer.style.width = "10px";
+    progressBarContainer.style.height = "100%";
+    progressBarContainer.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+    progressBarContainer.style.zIndex = "1000";
+
+    
+    const progressBar = document.createElement("div");
+    progressBar.style.width = "100%";
+    progressBar.style.height = "0";
+    progressBar.style.backgroundColor = "#007BFF";
+    progressBarContainer.appendChild(progressBar);
+
+    document.body.appendChild(progressBarContainer);
+
+    
+    window.addEventListener("scroll", () => {
+        const scrollTop = window.scrollY;
+        const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercentage = (scrollTop / documentHeight) * 100;
+        progressBar.style.height = `${scrollPercentage}%`;
+    });
 });
-//finisheddd
