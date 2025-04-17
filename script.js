@@ -70,6 +70,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
         #intro-popup {
             animation: fadeInSlideDown 0.5s ease;
+            border: 2px solid #007BFF;
+            box-shadow: 0 0 10px #007BFF, 0 0 20px #007BFF, 0 0 30px #007BFF;
+        }
+
+        @keyframes glowing {
+            0% { box-shadow: 0 0 5px #007BFF; }
+            50% { box-shadow: 0 0 20px #007BFF; }
+            100% { box-shadow: 0 0 5px #007BFF; }
+        }
+
+        #intro-popup {
+            animation: glowing 1.5s infinite;
         }
     `;
     document.head.appendChild(style);
