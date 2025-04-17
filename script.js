@@ -83,6 +83,15 @@ document.addEventListener("DOMContentLoaded", () => {
         #intro-popup {
             animation: glowing 1.5s infinite;
         }
+
+        #results-section-1, #results-section-2 {
+            border: 2px solid #007BFF;
+            box-shadow: 0 0 10px #007BFF, 0 0 20px #007BFF, 0 0 30px #007BFF;
+        }
+
+        #results-section-1, #results-section-2 {
+            animation: glowing 1.5s infinite;
+        }
     `;
     document.head.appendChild(style);
 
