@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    // Add navigation logic for the intro popup
+    
     const nextIntroSectionButton = document.getElementById("next-intro-section");
     const introSection1 = document.getElementById("intro-section-1");
     const introSection2 = document.getElementById("intro-section-2");
@@ -101,10 +101,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const popup = document.createElement("div");
         popup.textContent = "Scroll down to continue!";
         popup.style.position = "fixed";
-        popup.style.bottom = "20px"; // Place at the bottom of the screen
-        popup.style.left = "50%"; // Center horizontally
-        popup.style.transform = "translateX(-50%)"; // Adjust for true centering
-        popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; // Transparent dark background
+        popup.style.bottom = "20px"; 
+        popup.style.left = "50%"; 
+        popup.style.transform = "translateX(-50%)"; 
+        popup.style.backgroundColor = "rgba(0, 0, 0, 0.8)"; 
         popup.style.color = "white";
         popup.style.padding = "10px 20px";
         popup.style.borderRadius = "5px";
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         const result = calculateGenreScores(selectedGenres); // Calculate the genre scores before using it in the data object
 
-        // Prepare data for API
+        // API
         const data = {
             Pseudonym: pseudonym,
             Age: age,
@@ -260,7 +260,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ data: [data] }) // Ensure data is sent as an array to append in the same row
+                body: JSON.stringify({ data: [data] }) 
             });
 
             if (response.ok) {
@@ -268,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 section1.style.display = "none";
                 section2.style.display = "none";
                 section3.style.display = "none";
-                thankYou.style.display = "block"; // Only show the thank-you page
+                thankYou.style.display = "block"; // Only show the thx page
             } else {
                 console.error("Submission failed with status:", response.status);
                 alert("Failed to submit the survey. Please try again.");
@@ -301,16 +301,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             
             Object.keys(scores).forEach(trait => {
-                for (let i = 1; i <= 5; i++) { // Assuming 5 questions per trait
+                for (let i = 1; i <= 5; i++) { // Assuming kung 5 questions per trait
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
                     const input = document.querySelector(`input[name='${inputName}']:checked`);
                     console.log(`Looking for input: ${inputName}`); // Debugging log
                     if (input) {
                         const value = parseInt(input.value, 10);
-                        scores[trait] += value; // Sum up the scores
-                        console.log(`Found input: ${inputName}, Value: ${value}`); // Debugging log
+                        scores[trait] += value; // Sum up the scores d2
+                        console.log(`Found input: ${inputName}, Value: ${value}`); // Debugging
                     } else {
-                        console.warn(`No input found for Genre: ${genre}, Trait: ${trait}, Question: ${i}`); // Debugging log
+                        console.warn(`No input found for Genre: ${genre}, Trait: ${trait}, Question: ${i}`); 
                     }
                 }
             });
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
             let highestTrait = null;
             let highestScore = 0;
 
-            // this will find the highest scoring trait for the genre
+            // highest score d2
             Object.keys(result.scores).forEach(trait => {
                 if (result.scores[trait] > highestScore) {
                     highestScore = result.scores[trait];
@@ -400,23 +400,80 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.style.maxWidth = "80%";
         popup.style.overflowY = "auto";
 
-        let content = "<h2>The Results Are:</h2>";
-        results.forEach(result => {
-            content += `<h3>${result.genre}</h3>`;
-            content += `<p>Openness: ${result.traitLevels.O}</p>`;
-            content += `<p>Conscientiousness: ${result.traitLevels.C}</p>`;
-            content += `<p>Extraversion: ${result.traitLevels.E}</p>`;
-            content += `<p>Agreeableness: ${result.traitLevels.A}</p>`;
-            content += `<p>Neuroticism: ${result.traitLevels.N}</p>`;
-        });
+        popup.innerHTML = `
+            <div id="results-section-1">
+                <h2>Results</h2>
+                ${results.map(result => `
+                    <h3>${result.genre} Genre</h3>
+                    <p>Openness: ${result.traitLevels.O}</p>
+                    <p>Conscientiousness: ${result.traitLevels.C}</p>
+                    <p>Extraversion: ${result.traitLevels.E}</p>
+                    <p>Agreeableness: ${result.traitLevels.A}</p>
+                    <p>Neuroticism: ${result.traitLevels.N}</p>
+                `).join('')}
+                <button id="next-results-section" style="
+                    margin-top: 10px;
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Next</button>
+            </div>
+            <div id="results-section-2" style="display: none;">
+                <h2>Personality Result</h2>
+                <ul>
+                    ${results.map(result => {
+                        const highestTrait = Object.keys(result.scores).reduce((a, b) => result.scores[a] > result.scores[b] ? a : b);
+                        const lowestTrait = Object.keys(result.scores).reduce((a, b) => result.scores[a] < result.scores[b] ? a : b);
 
-        content += generateGenreDescriptions(results, pseudonym); // results
+                        const traitDescriptions = {
+                            O: "Openness, valuing creativity and imagination.",
+                            C: "Conscientiousness, being organized and dependable.",
+                            E: "Extraversion, thriving in social settings.",
+                            A: "Agreeableness, valuing empathy and harmony.",
+                            N: "Neuroticism, experiencing emotional intensity."
+                        };
 
-        content += '<button id="close-results-popup" style="margin-top: 10px; padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer;">Close</button>';
+                        const lowerTraitDescriptions = {
+                            O: "less open to new ideas and experiences.",
+                            C: "less organized and disciplined.",
+                            E: "less outgoing and energetic.",
+                            A: "less empathetic and cooperative.",
+                            N: "less emotionally sensitive or reactive."
+                        };
 
-        popup.innerHTML = content;
+                        return `
+                            <li>
+                                For the ${result.genre} genre, ${pseudonym} is more ${traitDescriptions[highestTrait]}.
+                                However, ${pseudonym} is ${lowerTraitDescriptions[lowestTrait]}.
+                            </li>
+                        `;
+                    }).join('')}
+                </ul>
+                <button id="close-results-popup" style="
+                    margin-top: 10px;
+                    padding: 10px 20px;
+                    background-color: #007BFF;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                ">Close</button>
+            </div>
+        `;
 
         document.body.appendChild(popup);
+
+        const nextResultsSectionButton = document.getElementById("next-results-section");
+        const resultsSection1 = document.getElementById("results-section-1");
+        const resultsSection2 = document.getElementById("results-section-2");
+
+        nextResultsSectionButton.addEventListener("click", () => {
+            resultsSection1.style.display = "none";
+            resultsSection2.style.display = "block";
+        });
 
         document.getElementById("close-results-popup").addEventListener("click", () => {
             popup.remove();
@@ -444,7 +501,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     const inputName = `${genre.toLowerCase()}-${trait.toLowerCase()}-${i}`;
                     const input = document.querySelector(`input[name='${inputName}']:checked`);
                     if (input) {
-                        scores[trait] += parseInt(input.value, 10); // Sum up the scores
+                        scores[trait] += parseInt(input.value, 10); // Sum the scores here
                     }
                 }
             });
@@ -511,3 +568,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     observer.observe(thankYouPage, { attributes: true, attributeFilter: ["style"] });
 });
+//finisheddd
